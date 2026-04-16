@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webtop Ubuntu</title>
+    <link rel="stylesheet" href="/static/css/desktop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F427;</text></svg>">
+</head>
+<body>
+    <div id="splash">
+        <div class="splash-logo">&#x1F427;</div>
+        <div class="splash-spinner"></div>
+        <div class="splash-text">Ubuntu Webtop Loading...</div>
+    </div>
+    <div id="top-panel">
+        <div id="panel-left">
+            <div id="activities-btn" onclick="toggleLauncher()">Activities</div>
+            <div id="active-window-title"></div>
+        </div>
+        <div id="panel-center" onclick="toggleCalendar()">
+            <span id="panel-clock"></span>
+        </div>
+        <div id="panel-right">
+            <div class="panel-indicator" onclick="showNotification('Network', 'Connected via Ethernet')">
+                <span class="panel-icon">&#x1F4F6;</span>
+            </div>
+            <div class="panel-indicator" onclick="showNotification('Volume', 'Volume: 75%')">
+                <span class="panel-icon">&#x1F50A;</span>
+            </div>
+            <div class="panel-indicator" onclick="showNotification('Battery', 'AC Power Connected')">
+                <span class="panel-icon">&#x1F50B;</span>
+            </div>
+            <div id="power-btn" onclick="showPowerMenu()">
+                <span class="panel-icon">&#x23FB;</span>
+            </div>
+        </div>
+    </div>
+    <div id="dock">
+        <div class="dock-item" onclick="openApp('files')" data-app="files">
+            &#x1F4C1;<span class="tooltip">Files</span>
+        </div>
+        <div class="dock-item" onclick="openApp('terminal')" data-app="terminal">
+            &#x1F4BB;<span class="tooltip">Terminal</span>
+        </div>
+        <div class="dock-item" onclick="openApp('editor')" data-app="editor">
+            &#x1F4DD;<span class="tooltip">Text Editor</span>
+        </div>
+        <div class="dock-item" onclick="openApp('browser')" data-app="browser">
+            &#x1F310;<span class="tooltip">Web Browser</span>
+        </div>
+        <div class="dock-separator"></div>
+        <div class="dock-item" onclick="openApp('sysmon')" data-app="sysmon">
+            &#x1F4CA;<span class="tooltip">System Monitor</span>
+        </div>
+        <div class="dock-item" onclick="openApp('settings')" data-app="settings">
+            &#x2699;&#xFE0F;<span class="tooltip">Settings</span>
+        </div>
+        <div class="dock-item" onclick="openApp('about')" data-app="about">
+            &#x2139;&#xFE0F;<span class="tooltip">About</span>
+        </div>
+        <div class="dock-separator"></div>
+        <div class="dock-item" onclick="openApp('calculator')" data-app="calculator">
+            &#x1F522;<span class="tooltip">Calculator</span>
+        </div>
+        <div class="dock-item" onclick="openApp('imageviewer')" data-app="imageviewer">
+            &#x1F5BC;&#xFE0F;<span class="tooltip">Image Viewer</span>
+        </div>
+    </div>
+    <div id="desktop" oncontextmenu="showDesktopContextMenu(event); return false;" onclick="closeAllPopups(event)">
+        <div id="desktop-icons">
+            <div class="desktop-icon" ondblclick="openApp('files')">
+                <div class="desktop-icon-img">&#x1F3E0;</div>
+                <div class="desktop-icon-label">Home</div>
+            </div>
+            <div class="desktop-icon" ondblclick="openApp('terminal')">
+                <div class="desktop-icon-img">&#x1F4BB;</div>
+                <div class="desktop-icon-label">Terminal</div>
+            </div>
+            <div class="desktop-icon" ondblclick="openApp('files', '/tmp')">
+                <div class="desktop-icon-img">&#x1F5D1;&#xFE0F;</div>
+                <div class="desktop-icon-label">Trash</div>
+            </div>
+        </div>
+    </div>
+    <div id="app-launcher">
+        <input type="text" class="launcher-search" placeholder="Type to search..." id="launcher-search" oninput="filterApps(this.value)">
+        <div class="launcher-grid" id="launcher-grid"></div>
+    </div>
+    <div id="calendar-popup"></div>
+    <div class="context-menu" id="context-menu"></div>
+    <script src="/static/js/windowmanager.js"></script>
+    <script src="/static/js/apps.js"></script>
+    <script src="/static/js/desktop.js"></script>
+</body>
+</html>
