@@ -1,0 +1,46 @@
+:root {
+    --ubuntu-orange: #E95420;
+    --ubuntu-dark: #2C001E;
+    --ubuntu-aubergine: #77216F;
+    --ubuntu-warm-grey: #AEA79F;
+    --ubuntu-cool-grey: #333333;
+    --panel-bg: rgba(30, 30, 30, 0.92);
+    --panel-height: 28px;
+    --dock-bg: rgba(30, 30, 30, 0.85);
+    --dock-width: 58px;
+    --window-bg: #2d2d2d;
+    --window-header: #373737;
+    --window-header-active: #404040;
+    --window-border: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --accent-blue: #3daee9;
+    --selection-bg: rgba(233, 84, 32, 0.3);
+    --terminal-bg: #300a24;
+    --terminal-fg: #ffffff;
+    --scrollbar-bg: rgba(255,255,255,0.08);
+    --scrollbar-thumb: rgba(255,255,255,0.25);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Ubuntu', 'Segoe UI', sans-serif; overflow: hidden; height: 100vh; width: 100vw; user-select: none; cursor: default; color: var(--text-primary); font-size: 13px; }
+::selection { background: var(--selection-bg); }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+#top-panel { position: fixed; top: 0; left: 0; right: 0; height: var(--panel-height); background: var(--panel-bg); backdrop-filter: blur(20px); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; z-index: 10000; font-size: 12.5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+#panel-left { display: flex; align-items: center; gap: 16px; }
+#activities-btn { padding: 2px 10px; cursor: pointer; border-radius: 3px; font-weight: 500; letter-spacing: 0.3px; }
+#activities-btn:hover { background: rgba(255,255,255,0.12); }
+#active-window-title { font-weight: 500; opacity: 0.9; }
+#panel-center { position: absolute; left: 50%; transform: translateX(-50%); cursor: pointer; padding: 2px 10px; border-radius: 3px; }
+#panel-center:hover { background: rgba(255,255,255,0.1); }
+#panel-right { display: flex; align-items: center; gap: 14px; }
+.panel-indicator { display: flex; align-items: center; gap: 5px; padding: 2px 6px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+.panel-indicator:hover { background: rgba(255,255,255,0.1); }
+.panel-icon { font-size: 14px; opacity: 0.9; }
+#power-btn { cursor: pointer; padding: 2px 6px; border-radius: 3px; }
+#power-btn:hover { background: rgba(255,255,255,0.1); }
+#desktop { position: fixed; top: var(--panel-height); left: var(--dock-width); right: 0; bottom: 0; background: linear-gradient(135deg, #2c001e 0%, #5e2750 30%, #e95420 100%); overflow: hidden; }
+#desktop-icons { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 8px; }
+.desktop-icon { display: flex; flex-direction: column; align-items: center; width: 80px; padding: 8px 4px; border-radius: 6px; cursor: pointer; text-align: center; }
+.desktop-icon:hover { background: rgba(255,255,255,0.12); }
